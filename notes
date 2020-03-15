@@ -1,0 +1,33 @@
+If I want to access the service or some HttpClientModule, then I need to do:
+conttructor(private http: HttpClientModule){
+
+}
+
+Pulling the data to the "console"!!! by Calling the rest api:
+1) import HttpClientModule on module.ts
+import {HttpClientModule} from '@angular/common/http';
+imports: [
+    BrowserModule,
+    HttpClientModule
+  ]
+2) On the component.ts under the constructor create an object of HttpClient
+ constructor(private httpComp: HttpClient) { }
+3) Using that object call the get() to fetch all data from the url to log them into console.
+const resp = this.http.get('https://jsonplaceholder.typicode.com/users');
+    resp.subscribe((data) => console.log(data));
+
+Pulling the data to the "html page"!!! by Calling the rest api:
+1) import HttpClientModule on module.ts
+import {HttpClientModule} from '@angular/common/http';
+imports: [
+    BrowserModule,
+    HttpClientModule
+  ]
+2) On the component.ts under the constructor create an object of HttpClient
+ constructor(private httpComp: HttpClient) { }
+ 3) Create a list called user:
+  user: any;
+3) Using that object call the get() to fetch all data from the url to log them into console.
+const response = this.httpComp.get('https://jsonplaceholder.typicode.com/users');
+    response.subscribe((data) => this.user = data);
+4) Go to .html page and iterate through the loop to print data on the html page
